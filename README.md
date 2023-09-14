@@ -1,4 +1,4 @@
 
-### تابع : [SYTHON](https://t.me/SAYTHONH) ###
+### قناه المطور: [𝗔𝗥𝗕𝗘𝗥](https://t.me/Haider_1h1) ###
 
-![SYTHON](https://te.legra.ph/file/80ff0951e619289e99c79.jpg)
+![𝗔𝗥𝗕𝗘𝗥](https://graph.org/file/feed042b5377641356780.jpg)
