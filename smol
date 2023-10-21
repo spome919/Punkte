@@ -1,0 +1,51 @@
+<?php 
+ob_start(); 
+$token = ""; # Token
+$userbot="C0iBoT";
+
+define("6711354111:AAFZjChz7yMPGna5Y7MJc76iNzwEUp0bvkw", $token);
+echo "setWebhook ~> <a href=\"https://api.telegram.org/bot".API_KEY."/setwebhook?url=".$_SERVER['SERVER_NAME']."".$_SERVER['SCRIPT_NAME']."\">https://api.telegram.org/bot".API_KEY."/setwebhook?url=".$_SERVER['SERVER_NAME']."".$_SERVER['SCRIPT_NAME']."</a>";
+function bot($method,$datas=[]){
+$url = "https://api.telegram.org/bot".API_KEY."/".$method;
+$ch = curl_init();
+curl_setopt($ch,CURLOPT_URL,$url);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+$res = curl_exec($ch);
+if(curl_error($ch)){
+var_dump(curl_error($ch));
+}else{
+return json_decode($res);
+}}
+
+# Short
+$update = json_decode(file_get_contents("php://input"));
+file_put_contents("update.txt",json_encode($update));
+$message = $update->message;
+$txt = $message->caption;
+$text = $message->text;
+$chat_id = $message->chat->id;
+$from_id = $message->from->id;
+$new = $message->new_chat_members;
+$message_id = $message->message_id;
+$type = $message->chat->type;
+$name = $message->from->first_name;
+if(isset($update->callback_query)){
+
+$up = $update->callback_query;
+$chat_id = $up->message->chat->id;
+$from_id = $up->from->id;
+$user = $up->from->username;
+$name = $up->from->first_name;
+$message_id = $up->message->message_id;
+$data = $up->data;
+}
+$id = $update->inline_query->from->id; 
+if(isset($update->inline_query)){
+$chat_id = $update->inline_query->chat->id;
+$from_id = $update->inline_query->from->id;
+$name = $update->inline_query->from->first_name.' '.$update->inline_query->from->last_name;
+$text_inline = $update->inline_query->query;
+$mes_id = $update->inline_query->inline_message_id; 
+$user = strtolower($update->inline_query->from->username); 
+}
